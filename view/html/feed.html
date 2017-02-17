@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>feed</title>
+</head>
+<body>
+<div id="article">
+    <ul v-for='item in items'>
+    <p>タイトル : {{item.subject}}</p>
+    <p>内容</p><p> {{item.contents}}</p>
+    <br/>
+    </ul>
+</div>
+
+<div id="input-form">
+
+<span>題名</span>
+<input v-model="subject" placeholder="edit me">
+<br>
+<span>本文</span>
+<br>
+<textarea v-model="contents" placeholder="add multiple lines"></textarea>
+
+    <button v-on:click="insert">OK</button>
+</div>
+
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!--<script type="text/javascript" src="../js/feed.js"></script>-->
+<script src="http://localhost:8888/app.js" ></script>
+<link rel="stylesheet" type="text/css" href="../css/feed.css">
+</body>
+</html>
