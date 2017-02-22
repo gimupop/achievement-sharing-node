@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "webpack-dev-server --inline --history-api-fallback --port 8888",
-    "api": "./node_modules/babel-cli/bin/babel-node.js api/app.js",
+    "api": "./node_modules/babel-cli/bin/babel-node.js app.js",
     "build": "./node_modules/webpack/bin/webpack.js -p --config webpack.config.production.js",
     "build:crossBrowser": "./node_modules/webpack/bin/webpack.js -p --config webpack.config.cross.browser.js",
     "test": "./node_modules/karma/bin/karma start ./karma.conf.js"
@@ -35,7 +35,11 @@
     "vuex": "^2.1.0",
     "vuex-router-sync": "^4.0.2",
     "mysql":"^2.13.0",
-    "axios":"^0.15.3"
+    "axios":"^0.15.3",
+    "passport":"^0.3.2",
+    "passport-local":"*",
+    "connect-flash":"*",
+    "express-session":"*"
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.16.0",
