@@ -14,11 +14,12 @@ CREATE TABLE `article` (
 CREATE TABLE `user_master` (
   `user_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `user_name` text NOT NULL,
+  `password` text NOT NULL,
   `photo` blob,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'root ' WITH GRANT OPTION;
 use mysql;

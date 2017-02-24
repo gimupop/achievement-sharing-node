@@ -16,7 +16,7 @@ module.exports = {
         // MySQLへ接続成功
       } })*/
   },
-  getHoge: function (query, cb) {
+  doQuery: function (query, cb) {
     //console.log(this.conn)
     this.conn.query(query, function(error, results){
       if (error) throw error
@@ -24,12 +24,13 @@ module.exports = {
       cb(results)
     })
   },
-  insertHoge: function (query, cb) {
+  doQuery2: function (query, cb,cb2) {
     //console.log(this.conn)
     this.conn.query(query, function(error, results){
       if (error) throw error
       //console.log(result)
       cb(results)
+      cb2()
     })
   },
 }

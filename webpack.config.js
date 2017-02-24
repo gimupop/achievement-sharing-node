@@ -2,7 +2,7 @@ const webpack = require("webpack")
 
 module.exports = {
   entry: [
-    './view/js/feed.js',
+    './views/js/feed.js',
   ],
   output: {
     path: './public',
