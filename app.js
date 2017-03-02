@@ -31,12 +31,12 @@ passport.use(new LocalStrategy(function (username, password, done) {
   db.connect()
   db.doQuery(query, function (result) {
     if (result.length == 0){
-      return done(null, null)
+      return done(null, null, { message: 'Incorrect username.' })
     }
     if (result[0].password == password) {
       return done(null, username)
     } else {
-      return done(null, null)
+      return done(null, null, { message: 'Incorrect username.' })
     }
   })
 }))

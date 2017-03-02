@@ -7,18 +7,30 @@ const db = require("./db.js")
 
 const passport = require('passport')
 
-router.post('/login', passport.authenticate('local'),
-  function (req, res) {
-    console.log('login')
-    const userName = addDubleQuote(req.session.passport.user)
-    db.connect()
-    const query = 'select user_id from user_master where user_name =' + userName
-    db.doQuery(query, function (result) {
-      req.session.passport.userId=result[0].user_id
-      res.redirect('/feed')
+router.post('/login', function (req, res, next) {
+  passport.authenticate('local', function (err, user, info) {
+    if (err) {
+      return next(err)
+    }
+    if (!user) {
+      return res.redirect('/login')
+    }
+    req.logIn(user, function (err) {
+      if (err) {
+        return next(err)
+      }
+
+      const userName = addDubleQuote(req.session.passport.user)
+      db.connect()
+      const query = 'select user_id from user_master where user_name =' + userName
+      db.doQuery(query, function (result) {
+        req.session.passport.userId = result[0].user_id
+        return res.redirect('/feed');
+      })
+
     })
-  }
-)
+  })(req, res, next)
+})
 
 router.get('/login', function (req, res) {
   res.sendFile(projectRoot + '/views/html/login.html');
@@ -41,21 +53,21 @@ router.get('/select', (req, res) => {
 router.get('/insert', (req, res) => {
   const subject = addDubleQuote(req.query.subject)
   const contents = addDubleQuote(req.query.contents)
-  console.log("userId"+req.session.passport.userId)
+  console.log("userId" + req.session.passport.userId)
   const userId = req.session.passport.userId
   db.connect()
-  const query = 'insert into article (subject,contents,user_id) values (' + subject + ',' + contents + ','+userId+')'
+  const query = 'insert into article (subject,contents,user_id) values (' + subject + ',' + contents + ',' + userId + ')'
   db.doQuery(query, function (result) {
     res.send(result)
   })
 })
 
-router.get('/gethoge', function(req, res){
+router.get('/gethoge', function (req, res) {
   console.log(req.session)
   res.send(req.session)
 })
 
-router.get('/logout', function(req, res){
+router.get('/logout', function (req, res) {
   req.logout()
   res.redirect('/login')
 })
@@ -73,9 +85,6 @@ function isAuthenticated(req, res, next) {
 function addDubleQuote(target) {
   return '"' + target + '"'
 }
-
-
-
 
 
 module.exports = router;
