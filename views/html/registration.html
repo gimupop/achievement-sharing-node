@@ -2,27 +2,24 @@
 <html lang="jp" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>registration</title>
 </head>
 <body>
-<form action="/login" method="post">
+<div id="input">
     <div>
         <label>ユーザーID：</label>
-        <input type="text" name="username"/>
+        <input v-model="username" placeholder="edit me">
     </div>
     <div>
         <label>パスワード：</label>
-        <input type="password" name="password"/>
+        <input v-model="password" placeholder="edit me">
     </div>
     <div>
-        <input type="submit" value="ログイン"/>
+        <button v-on:click="registration">登録</button>
     </div>
-</form>
-
-<form action="/registration"  method="get">
-  <input type="submit" value="ユーザー登録はこちら"/>
-</form>
-
+</div>
 <link href="../css/main.css" rel="stylesheet" type="text/css">
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="http://localhost:8888/app.js"></script>
 </body>
 </html>

@@ -47,8 +47,6 @@ app.use(bodyParser.urlencoded({extended: true}))
 const morgan = require('morgan');
 app.use(morgan('combined'));
 
-//検証用のhtmlの配備
-app.use(express.static('public'))
 
 //router
 const router = require('./api/router')

@@ -23,14 +23,5 @@ module.exports = {
       //console.log(result)
       cb(results)
     })
-  },
-  doQuery2: function (query, cb,cb2) {
-    //console.log(this.conn)
-    this.conn.query(query, function(error, results){
-      if (error) throw error
-      //console.log(result)
-      cb(results)
-      cb2()
-    })
-  },
+  }
 }
