@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 function load(article) {
-  axios.get('http://localhost:3000/select')
+  axios.get('http://localhost:3000/api/article')
     .then(function (response) {
       console.log("load")
       article.$data.items = response.data
@@ -28,8 +28,8 @@ let postArticle = new Vue({
   // `methods` オブジェクトの下にメソッドを定義する
   methods: {
     insert: function () {
-      var url = 'http://localhost:3000/insert?subject=' + this.subject + '&contents=' + this.contents
-      axios.get(url)
+      var url = 'http://localhost:3000/api/article?subject=' + this.subject + '&contents=' + this.contents
+      axios.post(url,{})
         .then(function () {
           console.log("post")
           load(article)

@@ -1,9 +1,8 @@
 const axios = require('axios')
 
 function loadMyArticle(myArticle) {
-  axios.get('http://localhost:3000/selectMyArticle')
+  axios.get('http://localhost:3000/api/article/mine')
     .then(function (response) {
-      console.log("loadmyartcle")
       myArticle.$data.items = response.data
     })
     .catch(function (error) {

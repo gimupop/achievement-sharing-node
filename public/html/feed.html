@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="jp" xmlns="http://www.w3.org/1999/html">
+<html lang="jp">
 <head>
     <meta charset="UTF-8">
     <title>feed</title>
 </head>
 <body>
-
+<h1>メインページ</h1>
 <div id="article">
     <ul v-for='item in items'>
         <p>投稿者 : {{item.user_name}}</p>
@@ -18,16 +18,17 @@
 
 <div id="input-form">
     <span>題名</span>
+    <br>
     <input v-model="subject" placeholder="edit me">
     <br>
     <span>本文</span>
     <br>
     <textarea v-model="contents" placeholder="add multiple lines"></textarea>
-    <button v-on:click="insert">OK</button>
+    <input type="button" value="登録" v-on:click="insert" />
 </div>
 
-<form action="/logout" method="get"><input type="submit" value="logout" /></form>
-
+<form action="/mypage" method="get"><input type="submit" value="マイページ" /></form>
+<form action="/logout" method="get"><input type="submit" value="ログアウト" /></form>
 
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="http://localhost:8888/app.js"></script>

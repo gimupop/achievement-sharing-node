@@ -9,12 +9,12 @@ module.exports = {
       database: 'core_master_db',
       port: 23306
     })
-/*    this.conn.connect(function (err) {
+    this.conn.connect(function (err) {
       if (err) {
-        // MySQLへ接続失敗
+        console.log(err)
       } else {
         // MySQLへ接続成功
-      } })*/
+      } })
   },
   doQuery: function (query, cb) {
     //console.log(this.conn)

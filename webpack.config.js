@@ -2,10 +2,10 @@ const webpack = require("webpack")
 
 module.exports = {
   entry: [
-    './views/js/feed.js',
-    './views/js/login.js',
-    './views/js/registration.js',
-    './views/js/mypage.js',
+    './public/js/feed.js',
+    './public/js/login.js',
+    './public/js/registration.js',
+    './public/js/mypage.js',
   ],
   output: {
     path: './public',

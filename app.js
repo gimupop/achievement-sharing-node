@@ -5,8 +5,7 @@ import express from 'express'
 const passport = require('passport')
 const app = express()
 const port = 3000
-const loginUtill = require("./api/models/loginUtill.js")
-const db = require("./api/db.js")
+const db = require("./utills/db.js")
 global.projectRoot = __dirname
 
 
@@ -47,11 +46,11 @@ app.use(bodyParser.urlencoded({extended: true}))
 const morgan = require('morgan');
 app.use(morgan('combined'));
 
+app.use(express.static('public'))
 
 //router
-const router = require('./api/router')
+const router = require('./routers/router')
 app.use('/', router)
-
 app.listen(port, () => {
   console.log(`API listening on port ${port}`)
 })

@@ -10,9 +10,9 @@ let registration = new Vue({
   // `methods` オブジェクトの下にメソッドを定義する
   methods: {
     registration: function () {
-      var url = 'http://localhost:3000/registrationUser?username=' + this.username + '&password=' + this.password
+      var url = 'http://localhost:3000/api/user?username=' + this.username + '&password=' + this.password
       console.log(url)
-      axios.get(url)
+      axios.post(url,{})
         .then(function () {
           console.log("post")
         })
